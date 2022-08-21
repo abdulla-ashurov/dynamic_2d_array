@@ -19,3 +19,9 @@ short **malloc_2d_array(const size_t rows, const size_t cols) {
 
     return array_2d;
 }
+
+void free_2d_array(short **array_2d) {
+    if (!array_2d) 
+        std::cerr << "OS cannot remove memory for array! Because 2d array is null";
+    std::free(array_2d);
+}

@@ -25,3 +25,38 @@ void free_2d_array(short **array_2d) {
         std::cerr << "OS cannot remove memory for array! Because 2d array is null";
     std::free(array_2d);
 }
+
+void initialize_2d_array(short **array_2d, const size_t rows, const size_t cols) {
+    if (!array_2d)
+        std::cerr << "We cannot initialize! Because 2d array is null";
+    else {
+        for (int i = 0; i < rows; i++) 
+            for (int j = 0; j < cols; j++) 
+                array_2d[i][j] = rand() % 20;
+    }
+}
+
+void print_2d_array(short **array_2d, const size_t rows, const size_t cols) {
+    if (!array_2d)
+        std::cerr << "We cannot print! Because 2d array is null";
+    else {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) 
+                std::cout << array_2d[i][j] << "\t";
+            std::cout << std::endl;
+        }
+    }
+}
+
+int main()
+{
+    const size_t rows = 4, cols = 5;
+    short **array_2d = malloc_2d_array(rows, cols);
+
+    initialize_2d_array(array_2d, rows, cols);
+    print_2d_array(array_2d, rows, cols);
+
+    free_2d_array(array_2d);
+
+    return 0;
+}
